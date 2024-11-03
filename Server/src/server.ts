@@ -5,6 +5,7 @@ import colors from "colors";
 import swaggerUi from 'swagger-ui-express'
 import swaggerSpec from "./config/swagger";
 import cors, { CorsOptions } from "cors";
+import morgan from "morgan";
 
 // conectar a db
 async function connectDB() {
@@ -37,6 +38,8 @@ server.use(cors(corsOptions))
 
 //Leer deatos de formulario
 server.use(express.json())
+
+server.use(morgan('dev'))
 
 server.use("/api/products", router);
 
